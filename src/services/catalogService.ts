@@ -3,6 +3,8 @@ import  { Product } from "../models/product.model";
 
 export class CatalogService{
     private __repository:IcatalogRepository;
+    // here the database repository is injected runtime with iCatalogRepository as Interface type.
+
     constructor(__repository:IcatalogRepository){
         this.__repository=__repository;                                 ``
     }
@@ -12,6 +14,8 @@ export class CatalogService{
         return data;
     }
     updateProduct(input:any) {
+    
+         
     }
     deleteProduct(id:number){
     }

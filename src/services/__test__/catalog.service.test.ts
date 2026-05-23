@@ -5,8 +5,14 @@ import { MockCatalogRepository } from "../../repository/mockCatalog.Repository";
 import { CatalogService } from "../catalogService";
 
 
+const mockProduct = ()=>{
+
+}
+
 describe("This is first test case",()=>{
-    let repository: IcatalogRepository
+    let repository: IcatalogRepository;
+
+    
     beforeEach(()=>{
        repository= new MockCatalogRepository();
     });
@@ -18,12 +24,13 @@ describe("This is first test case",()=>{
     describe("create Product",()=>{
         test("test Should Create Product",async ()=>{
                 const service = new CatalogService(repository);
-                const testProduct = {
-                    name:"Kiran",
-                    description:"some description",
-                    stock:10,
-                    price:100,
-                }
+                 const testProduct =mockProduct;
+                //{
+                //     name:"Kiran",
+                //     description:"some description",
+                //     stock:10,
+                //     price:100,
+                // }
                 const result =  await service.createProduct(testProduct);
                 expect(result).toMatchObject({
                     id:expect.any(Number),
@@ -34,7 +41,9 @@ describe("This is first test case",()=>{
                 });
 
         })
-        test("test throw an error when product is already exist",()=>{
+        test("test should delete a product",()=>{
+
+            const service = new CatalogService(repository)
 
         })
 
