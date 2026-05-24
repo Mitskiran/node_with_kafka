@@ -15,6 +15,6 @@ module.exports = {
   coverageDirectory:"coverage",
   coveragePathIgnorePatterns:["/node_modules"],
   coverageProvider: "v8",
-  moduleDirectories:["node_modules","src"]
+  moduleDirectories:["node_modules","src"],
 };
 

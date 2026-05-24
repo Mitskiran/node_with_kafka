@@ -5,5 +5,5 @@ export interface IcatalogRepository{
     update(data:Product): Promise<Product>;
     delete(id:Number):void;
     find(): Promise<[]>;
-    findbyID(id:Number): Promise<Product>;
+    findbyID(id:Number, limit:number, offset:number): Promise<Product>;
 }
