@@ -22,7 +22,6 @@ export class MockCatalogRepository implements IcatalogRepository{
         throw new Error("Method not implemented.");
     }
     find(limit:number, offset:number): Promise<Product[]> {
-        console.log("dev mein changes kiye re baba");
         const mockData:Product[]=[{
             id:123,
             name:"kiran",
