@@ -42,7 +42,9 @@ export class CatalogService{
     }
     deleteProduct(id:number){
     }
-    getProducts(limit:number, offset:number){
+    async getProducts(limit:number, offset:number){
+        const data = this.__repository.find(limit, offset)
+        return data;
 
     }
     async getProduct(id:number,limit:number, offset:number){

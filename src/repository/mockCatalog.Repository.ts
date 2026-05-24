@@ -21,10 +21,27 @@ export class MockCatalogRepository implements IcatalogRepository{
     delete(id: Number): void {
         throw new Error("Method not implemented.");
     }
-    find(): Promise<[]> {
-        throw new Error("Method not implemented.");
+    find(limit:number, offset:number): Promise<Product[]> {
+        const mockData:Product[]=[{
+            id:123,
+            name:"kiran",
+            description:"amusement park",
+            price:100,
+            stock:10,
+        },{id:124,
+            name:"Sagar",
+            description:"amusement park Sagar",
+            price:100,
+            stock:10,},
+        {id:125,
+            name:"kiran",
+            description:"amusement park Mitke",
+            price:100,
+            stock:10,}] 
+    return Promise.resolve(mockData)
+
     }
-    findbyID(id: Number, limit:number, offset:number): Promise<Product> {
+    findbyID(id: number, limit:number, offset:number): Promise<Product> {
         const mockdata:Product={
             id:id,
             name:"kiran",
