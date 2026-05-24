@@ -35,16 +35,23 @@ export class CatalogService{
         catch(error)
         {
              throw new Error(`${error}`);
-        }
-
-    
-                     
+        }                     
     }
-    deleteProduct(id:number){
+    async deleteProduct(id:number){
+        const DeletedProduct = await this.__repository.findbyIdandDelete(id);
+        return DeletedProduct;
     }
     async getProducts(limit:number, offset:number){
-        const data = this.__repository.find(limit, offset)
-        return data;
+        try {
+            const products = await this.__repository.find(limit, offset)
+            return products;
+
+
+            
+        } catch (error) {
+            throw new Error(`${error}`);
+        }
+        
 
     }
     async getProduct(id:number,limit:number, offset:number){

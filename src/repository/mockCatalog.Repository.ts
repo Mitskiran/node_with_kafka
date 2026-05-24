@@ -1,11 +1,11 @@
-import { mock } from "node:test";
+
 import type { IcatalogRepository } from "../interface/catalogReposiory.interface.ts";
 import { Product } from "../models/product.model.js";
-import { promiseHooks } from "node:v8";
+
 
 
 export class MockCatalogRepository implements IcatalogRepository{
-   async  create(data: Product): Promise<Product> {
+   async create(data: Product): Promise<Product> {
         const mockData = {
             id:123,
             ...data
@@ -18,8 +18,14 @@ export class MockCatalogRepository implements IcatalogRepository{
 
         return Promise.resolve(data);
     }
-    delete(id: Number): void {
-        throw new Error("Method not implemented.");
+    findbyIdandDelete(id: number): number|string {
+        if(id<10 || id>0)
+        {
+        return id
+        }
+    else{
+        return "unable to find the product";
+        }
     }
     find(limit:number, offset:number): Promise<Product[]> {
         const mockData:Product[]=[{

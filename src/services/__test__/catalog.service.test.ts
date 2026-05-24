@@ -1,5 +1,4 @@
 
-import { response } from "express";
 import { IcatalogRepository } from "../../interface/catalogReposiory.interface";
 import { Product } from "../../models/product.model";
 import { MockCatalogRepository } from "../../repository/mockCatalog.Repository";
@@ -188,10 +187,36 @@ describe("This is first test case",()=>{
                 })
             }
         })
+        test("Unable to Fetch all products due to DB error",async ()=>{
+                const service = new CatalogService(repository);
+                const input = {limit: faker.datatype.number({min:1, max:10}),
+            offset: faker.datatype.number({min:1, max:10})}
+            jest.spyOn(repository, "find").mockImplementationOnce(()=>Promise.reject(new Error("Unable to fetch due to DB error")))
+                await expect(service.getProducts(input.limit, input.offset)).rejects.toThrow("Unable to fetch due to DB error");
+        })
+
 
        
+    })
+    describe("delete Products",()=>{
+        test("delete product using the ID",async ()=>{
+            const service = new CatalogService(repository);
+            const testId = {id:faker.datatype.number({min:1, max:10})};
+            const result =  await service.deleteProduct(testId.id);
+            if(result ==  testId.id)
+            {
+                expect(result).toEqual(testId.id);
+            }
+            else{
+                test("unable to find the product",()=>{
+                    expect(result).toEqual("unable to find the product");
+                })
+            }
+
+        })
+        
     })
     
     
     
-});;
+});
