@@ -5,6 +5,7 @@ import { Product } from "../../models/product.model";
 import { MockCatalogRepository } from "../../repository/mockCatalog.Repository";
 import { CatalogService } from "../catalogService";
 import {faker} from "@faker-js/faker";
+import { serialize } from "node:v8";
 
 
 const mockProduct = (rest:any)=>{
@@ -156,21 +157,40 @@ describe("This is first test case",()=>{
                  jest.spyOn(repository,"findbyID").mockImplementationOnce(()=>Promise.resolve({} as unknown as Product))
                  await expect(service.getProduct(testProduct.id, testProduct.limit, testProduct.offset)).rejects.toThrow("Id does not exist hence unable to get the product");
         })
-        // test("unable to update product",async ()=>{
-        // const service = new CatalogService(repository);
-        //          const testProduct = mockProduct(
-        //             {price: +faker.commerce.price(),
-        //                 id: faker.datatype.number({min:10, max:1000})
-        //             }
-        //          )
+         test("Error in DB when fetching the product",async ()=>{
+        const service = new CatalogService(repository);
+                 const testProduct ={id: faker.datatype.number({min:10, max:1000})
+                    , limit: faker.datatype.number({min:10, max:50})
+                    , offset: faker.datatype.number({min:10, max:50})
+                    }
 
-        //          jest.spyOn(repository,"update").mockImplementationOnce(()=>Promise.reject(new Error("unable to create Product due to database error")));
+                 jest.spyOn(repository,"findbyID").mockImplementationOnce(()=>Promise.reject(new Error("Error in DB when fetching the product")));
 
-        //          await expect(service.updateProduct(testProduct)).rejects.toThrow("unable to create Product due to database error");
+                 await expect(service.getProduct(testProduct.id, testProduct.limit, testProduct.offset)).rejects.toThrow("Error in DB when fetching the product");
                  
-        // })
+        })
     })
     
+    describe("get Products",()=>{
+        test("should fetch all producta",async ()=>{
+                const service = new CatalogService(repository);
+                const input = {limit: faker.datatype.number({min:1, max:10}),
+            offset: faker.datatype.number({min:1, max:10})}
+            const AllProducts:Product[] = await service.getProducts(input.limit, input.offset);
+            for (let product of AllProducts)
+            {
+                expect(product).toMatchObject({
+                    id:expect.any(Number),
+                    name:expect.any(String),
+                    price:expect.any(Number),
+                    stock:expect.any(Number),
+                    description:expect.any(String)
+                })
+            }
+        })
+
+       
+    })
     
     
     

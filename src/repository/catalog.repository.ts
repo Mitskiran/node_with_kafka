@@ -9,6 +9,7 @@ export class CatalogRepository implements IcatalogRepository{
         throw new Error("Method not implemented.");
     }
     delete(id: Number): void {
+        
         throw new Error("Method not implemented.");
     }
     find(): Promise<[]> {
