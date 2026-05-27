@@ -1,6 +1,6 @@
 import type { IcatalogRepository } from "../interface/catalogReposiory.interface.ts";
 import type { Product } from "../models/product.model.ts";
-
+//to be edited with actual product implementation
 export class CatalogRepository implements IcatalogRepository{
     create(data: Product): Promise<Product> {
         throw new Error("Method not implemented.");
