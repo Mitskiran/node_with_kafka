@@ -4,8 +4,14 @@ import { Product } from "../../models/product.model";
 import { MockCatalogRepository } from "../../repository/mockCatalog.Repository";
 import { CatalogService } from "../catalogService";
 import {faker} from "@faker-js/faker";
-import { serialize } from "node:v8";
+import {Factory } from  "rosie"
 
+const product = new Factory<Product>()
+.attr("id", faker.datatype.number({min:1, max:1000}))
+.attr("name", faker.commerce.productName())
+.attr("description", faker.commerce.productDescription())
+.attr("stock", faker.datatype.number({min:1, max:100}))
+.attr("price", faker.datatype.number({min:100, max:10000}))
 
 const mockProduct = (rest:any)=>{
     return{

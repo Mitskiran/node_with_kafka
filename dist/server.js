@@ -1,7 +1,13 @@
-import app from "./express.server";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.startServer = void 0;
+const express_server_1 = __importDefault(require("./express.server"));
 const PORT = process.env.PORT || 8000;
-export const startServer = () => {
-    app.listen(PORT, () => {
+const startServer = () => {
+    express_server_1.default.listen(PORT, () => {
         console.log("server is listening and can be access on http://localhost:8000");
     });
     process.on('uncaughtException', async (err) => {
@@ -9,4 +15,5 @@ export const startServer = () => {
         process.exit(1);
     });
 };
-startServer();
+exports.startServer = startServer;
+(0, exports.startServer)();
