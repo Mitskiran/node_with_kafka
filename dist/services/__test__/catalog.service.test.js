@@ -3,13 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mockCatalog_Repository_1 = require("../../repository/mockCatalog.Repository");
 const catalogService_1 = require("../catalogService");
 const faker_1 = require("@faker-js/faker");
-const rosie_1 = require("rosie");
-const product = new rosie_1.Factory()
-    .attr("id", faker_1.faker.datatype.number({ min: 1, max: 1000 }))
-    .attr("name", faker_1.faker.commerce.productName())
-    .attr("description", faker_1.faker.commerce.productDescription())
-    .attr("stock", faker_1.faker.datatype.number({ min: 1, max: 100 }))
-    .attr("price", faker_1.faker.datatype.number({ min: 100, max: 10000 }));
+const Fixtures_1 = require("../../utils/Fixtures");
+Fixtures_1.FactoryProduct;
 const mockProduct = (rest) => {
     return {
         name: faker_1.faker.commerce.productName(),

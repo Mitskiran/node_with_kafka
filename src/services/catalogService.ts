@@ -2,6 +2,9 @@ import { off } from "node:cluster";
 import  { IcatalogRepository } from "../interface/catalogReposiory.interface";
 import  { Product } from "../models/product.model";
 
+
+
+
 export class CatalogService{
     private __repository:IcatalogRepository;
     // here the database "__repository" is injected runtime with iCatalogRepository as Interface type.

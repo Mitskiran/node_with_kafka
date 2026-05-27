@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CatalogRepository = void 0;
+//to be edited with actual product implementation
 class CatalogRepository {
     create(data) {
         throw new Error("Method not implemented.");
