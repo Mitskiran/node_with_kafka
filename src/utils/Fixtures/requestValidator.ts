@@ -3,30 +3,7 @@ import { ValidationError,  validate } from "class-validator";
 import { IsNotEmpty, IsNumber, IsString, Min } from "class-validator";
 import { error } from "node:console";
 
-export class CreateProductRequest {
-    @IsString()
-    @IsNotEmpty()
-    name: string;
-    
-    @IsString()
-    description: string;
 
-    @IsNumber()
-    @Min(1)
-    price: number;
-
-    @IsNumber()
-    stock: number;
-
-}
-
-const mockrequest = {
-    name:"",
-    description:123,
-    price:"",
-    stock:""
-
-}
 //request validator se ek plaintoclass se bana hua ek input class ayega jo kisi bhi type ka ho sakta hain.
 const validationError = async(input:any):Promise<ValidationError[] |false>=>{
     
@@ -69,4 +46,3 @@ export const requestValidator = async<T>(type:ClassConstructor<T>, body:any):Pro
         return {error:false, input}
 }
 
-requestValidator(CreateProductRequest, mockrequest );
