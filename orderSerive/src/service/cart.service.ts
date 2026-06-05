@@ -1,0 +1,26 @@
+import { CartRepositoryType } from "../types/repository.type"
+
+export const createCart = async (input:any, repo:CartRepositoryType)=>{
+    const data = await repo.create(input)
+
+    return data
+}
+
+export const getCart = async (input:any, repo:CartRepositoryType)=>{
+   const data = await repo.create(input)
+
+    return data
+}
+
+export const editCart = async (input:any, repo:CartRepositoryType)=>{
+   const data = await repo.create(input)
+
+    return data
+}
+
+export const deleteCart = async (input:any, repo:CartRepositoryType)=>{
+   const data = await repo.create(input)
+
+    return data
+
+}
