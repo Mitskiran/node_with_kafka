@@ -1,16 +1,26 @@
 services:
   postgres:
-    image: "postgres:14.0"
+    image: postgres:14.0
     ports:
-      - "5432:5432" #machine port:container port
-    deploy:
-      mode: replicated
-      replicas: 1
+      - "5432:5432"
     environment:
       POSTGRES_USER: catalog_db
       POSTGRES_PASSWORD: catalog_db_password
       POSTGRES_DB: catalog_service
     volumes:
-      - ./db-data/postgres/:/var/lib/postgresql/data #machine path: container path 
+      - ./db-data/postgres:/var/lib/postgresql/data #machine_path : container_path
 
+  mongodb:
+    image: mongo:8
+    container_name: MongoDB_Container
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+    volumes:
+      - mongo_data:/data/db
 
+volumes:
+  mongo_data:

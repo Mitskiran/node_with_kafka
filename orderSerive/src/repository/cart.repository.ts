@@ -1,19 +1,20 @@
 import { CartRepositoryType } from "../types/repository.type"
 
 const createCart = async (input:any):Promise<{}>=>{
-    return Promise.resolve("cart created");
+    //connect to DB and perform the DB operation
+    return Promise.resolve({message:"cart created"});
 
 }
 const updateCart = async (input:any):Promise<{}>=>{
-    return Promise.resolve("cart updated");
+    return Promise.resolve({message:"cart updated"});
 
 }
 const getCart = async (input:any):Promise<{}>=>{
-    return Promise.resolve("cart getCart");
+    return Promise.resolve({message:"cart getCart"});
 
 }
 const deleteCart = async (input:any):Promise<{}>=>{
-    return Promise.resolve("cart deleted");
+    return Promise.resolve({message:"cart deleted"});
 
 }
 
