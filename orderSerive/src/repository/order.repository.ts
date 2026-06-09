@@ -1,23 +1,23 @@
-export const CreateCart = async (input:any)=>{
+export const CreateOrder = async (input:any)=>{
 
-    return {message:"created the cart service"}
-
-}
-
-export const GetCart = async (input:any)=>{
-
-    return {message:"created the cart service"}
+    return {message:"created the Order service"}
 
 }
 
-export const EditCart = async (input:any)=>{
+export const GetOrder = async (input:any)=>{
 
-    return {message:"created the cart service"}
+    return {message:"created the Order service"}
 
 }
 
-export const DeleteCart = async (input:any)=>{
+export const EditOrder = async (input:any)=>{
 
-    return {message:"created the cart service"}
+    return {message:"created the Order service"}
+
+}
+
+export const DeleteOrder = async (input:any)=>{
+
+    return {message:"created the Order service"}
 
 }

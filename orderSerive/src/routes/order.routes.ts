@@ -4,6 +4,7 @@ import * as service from "../service/order.service"
 const router   = express.Router();
 
 router.post("/order",async(req:Request, res:Response, next: NextFunction)=>{
+    
     return res.status(200).json({message:"create order"});
 })
 

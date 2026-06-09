@@ -1,0 +1,23 @@
+{
+  "name": "db",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc -p .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/mongoose": "^5.11.96",
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.6.3",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
