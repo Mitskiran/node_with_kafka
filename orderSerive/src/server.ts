@@ -1,7 +1,10 @@
  import app from "./express-app"
+import dotenv from "dotenv"
+import {connectMongoDB} from "./db/connectMongoDB"
+dotenv.config();
 
 const PORT = process.env.APP_PORT || 9003
-
+connectMongoDB()
 export const startServer=()=>{
 
 
